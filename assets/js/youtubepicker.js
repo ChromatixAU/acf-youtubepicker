@@ -38,9 +38,9 @@
 			self.$content = self.$panel.find('.youtubepicker-content');
 
 			offset.x = (self.$field.offset().left - self.$panel.parent().offset().left);
-			offset.x += parseInt(self.options.offset.x, 10)||0;	
+			offset.x += parseInt(self.options.offset.x, 10)||0;
 			offset.y = parseInt(self.options.offset.y, 10)||0;
-			
+
 			self.$panel.css({'margin-left':offset.x, 'margin-top':offset.y});
 
 			self.field_events();
@@ -57,7 +57,7 @@
 				clearTimeout(timer);
 				if(!self.term.length){
 					self.$content.empty();
-					self.$panel.removeClass('youtubepicker-loading');					
+					self.$panel.removeClass('youtubepicker-loading');
 					self.scroller('update');
 				}else if(self.term.length >= self.options.minChar && lastTerm !== self.term ){
 					timer = setTimeout(function(){
@@ -101,12 +101,12 @@
 					var item    = $(this).closest('.youtubepicker-item');
 					var data    = item.data('youtubepicker-item-data');
 					var preview = self.$panel.find('.youtubepicker-preview');
-					
+
 					preview.addClass('show');
 					preview.find('.youtubepicker-player').html(self.template('player', data));
 					self.$panel.find('.youtubepicker-preview-btn').removeClass('current');
 					item.addClass('current');
-				});				
+				});
 			} else {
 				self.$panel.find('.youtubepicker-preview-close-btn').off().click(function(e){
 					e.preventDefault();
@@ -135,7 +135,7 @@
 
 			if($.isFunction(nano.nanoScroller)){
 				if(act === 'update'){
-					self.$panel.find('.nano').nanoScroller();						
+					self.$panel.find('.nano').nanoScroller();
 				} else {
 					nano.nanoScroller(setTimeout.nanoScroller)
 						.on('scrollend', function(){
@@ -198,7 +198,7 @@
 			var self      = this;
 			var items     = data.items||[];
 			var noRecords = self.$panel.find('.youtubepicker-no-records');
-			
+
 			if(!items.length){
 				noRecords.show();
 			} else {
@@ -217,7 +217,7 @@
 					}
 				}
 			}
-			
+
 			self.$panel.removeClass('youtubepicker-loading');
 			self.scroller('update');
 			self.buttons_events('items');
@@ -228,12 +228,12 @@
 						key: self.options.key,
 						part: "snippet",
 						type: "video",
-						pageToken: self.pageToken, 
+						pageToken: self.pageToken,
 						q: self.term
 					};
 
 			params = $.extend({}, self.options.searchParams, params);
-			
+
 			self.$panel.addClass('youtubepicker-loading');
 			self.$field.trigger('loadInit', params);
 
@@ -258,21 +258,21 @@
 	};
 
 	$.fn.youtubepicker.options = {
-		key: "AIzaSyAuHQVhEmD4m2AXL6TvADwZIxZjNogVRF0",
+		key: "_INVALID_KEY_",
 		prefix: "youtubepicker",
 		minChar: 3,
 		searchDelay: 2,
 		preview: true,
 		cloneField: true,
 		offset: {
-			x: 0, 
+			x: 0,
 			y: 0
 		},
 		language: {
 			buttons: {
 				preview: "Preview",
 				select: "Select",
-				close: "&times;" 
+				close: "&times;"
 			},
 			labels: {
 				views: "Views",
@@ -280,7 +280,7 @@
 				loading: "Loading..."
 			}
 		},
-		searchParams: {			
+		searchParams: {
 			maxResults: 50,
 			order: "relevance"
 		}
